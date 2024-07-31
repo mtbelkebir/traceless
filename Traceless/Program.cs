@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using Traceless.Data;
+
 namespace Traceless
 {
     public class Program
@@ -13,6 +16,9 @@ namespace Traceless
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<TracelessDbContext>(options =>
+                options.UseInMemoryDatabase("TracelessDB"));
 
             var app = builder.Build();
 
